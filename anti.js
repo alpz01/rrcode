@@ -1,4 +1,4 @@
-import { addListener, launch } from 'devtools-detector';
+import { addListener, launch } from '/devtools-detector';
 const view = document.createElement('div');
 document.body.appendChild(view);
 
