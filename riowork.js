@@ -167,7 +167,7 @@ function checkFor(trgt) {
         $(".e_server").text("GDrive Server")
     }
     if (vidType == "yt") {
-        $(".e_server").text("YouTube")
+        $(".e_server").text("YouTube Stream")
     }
    
     function fpoptlck() {
