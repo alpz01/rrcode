@@ -149,9 +149,6 @@ if (count != 0) {
     plyr == "i" ?  checkFor(plyr) : null;
     plyr == "j" ?  jwPlayerSetup(): null;
     plyr == "p" ?   playerIoSetup(): null;
-} else {
-    console.log("What the dog doing???")
-}
 
 function checkFor(trgt) {
     let vidType = epSet[3];
