@@ -149,6 +149,7 @@ if (count != 0) {
     plyr == "i" ?  checkFor(plyr) : null;
     plyr == "j" ?  jwPlayerSetup(): null;
     plyr == "p" ?   playerIoSetup(): null;
+}
 
 function checkFor(trgt) {
     let vidType = epSet[3];
