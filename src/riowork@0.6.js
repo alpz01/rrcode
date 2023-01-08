@@ -131,6 +131,7 @@ function disableButton(input) {
 }
 
 // Activate the function & Create Button
+let count = parseInt(epSet[1])
 function activate() {
     $(`<h1>${document.title}</h1>`).insertAfter(".server_option .fl-space");
     $("#reportTitle").text(document.title);
