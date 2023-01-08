@@ -5,7 +5,7 @@ let btnClick = 1;
 let episodes_list = [];
 let count;
 
-createDiv(epSet[0]);
+$(createDiv(epSet[0])).After("#extra-info");
 createButton();
 vidStream();
 epCountDown();
