@@ -1,4 +1,4 @@
-import { sayHi } from './createDiv.js';
+import { sayHi } from './createDiv@0.1.js';
 
 let PrevBtnPos = 0;
 let btnClick = 1;
