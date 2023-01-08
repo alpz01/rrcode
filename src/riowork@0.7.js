@@ -2,7 +2,8 @@ import {
     createDiv
 } from './createDiv.js'
 
-createDiv;
+createDiv();
+
 let PrevBtnPos = 0
 let btnClick = 1
 let episodes_list = []
@@ -133,6 +134,10 @@ function disableButton(input) {
 // Activate the function & Create Button
 let count = parseInt(epSet[1])
 function activate() {
+    createButton()
+    vidStream()
+    epCountDown()
+
     $(`<h1>${document.title}</h1>`).insertAfter(".server_option .fl-space");
     $("#reportTitle").text(document.title);
     $("#iframePlayer").attr("src", episodes_list[0])
@@ -151,9 +156,8 @@ function activate() {
         }
     }
 
-    createButton()
-    vidStream()
-    epCountDown()
+    plyr == "j" ?  jwPlayerSetup(): null;
+    plyr == "p" ?   playerIoSetup(): null;
 }
 activate()
 
