@@ -1,11 +1,11 @@
-import { createDiv } from "./createDiv.js";
+import { sayhi } from './createDiv.js';
 
 let PrevBtnPos = 0;
 let btnClick = 1;
 let episodes_list = [];
 let count;
 
-$(createDiv(epSet[0])).insertAfter("#extra-info");
+sayhi("John");
 createButton();
 vidStream();
 epCountDown();
