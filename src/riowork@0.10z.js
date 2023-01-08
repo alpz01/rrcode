@@ -1,4 +1,4 @@
-import { createDiv } from "./createDiv@0.2.js";
+import { createDiv } from "./createDiv@0.3.js";
 
 let PrevBtnPos = 0;
 let btnClick = 1;
