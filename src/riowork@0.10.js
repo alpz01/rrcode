@@ -1,11 +1,11 @@
-import { sayHi } from './createDiv@0.1.js';
+import { createDiv } from "./createDiv@0.2.js";
 
 let PrevBtnPos = 0;
 let btnClick = 1;
 let episodes_list = [];
-let count;
+let count = epSet[1];
 
-sayHi("John");
+createDiv(epSet[0]);
 createButton();
 vidStream();
 epCountDown();
