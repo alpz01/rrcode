@@ -9,6 +9,18 @@ s1Ep = [
  "https://www.blogger.com/video.g?token=AD6v5dwWgOPznwl7eW5B1F_jg3DLHHh0TFHCUB4cKJRRDFl-XdSZ7tHKfVHHtf14xd0J0fuZIeYSlcTNdeSGzi49eRoc908xOomG9o7JzNSbEsawc_zFYyMT0xJJGvdBnVxhZbI6nWTY",
  "https://www.blogger.com/video.g?token=AD6v5dzQckrxOrIAD8AWn3v3sgvBTIgn2tgeSTm3swwDbwCwWAONPKVgY84QhTjbbJXVJU6bbpI-G7fsodoqqS5TMmYaES42agsY7JyYRVFedp7NWnlt69C7v40talIfYCh5VPfbmNGM",
  "https://www.blogger.com/video.g?token=AD6v5dyy5GG9kTXBtvB93PfY3Bl19EzQrMq3Hx-U5_BkvHX2LyysXvvrE7lijwGxiO-V6i4G6WOLqMMzFzAB6G2lLIWrtw8ua8K4ZYcZdI9qFXCIpvHgEKnKFYCVga0wd2rAZNXxfHXH",
+ "https://youtube.com/embed/B3Iad7Gbzgw?rel=0&modestbranding=1",
+ "https://youtube.com/embed/EhqKIZ91Yic?rel=0&modestbranding=1",
+ "https://youtube.com/embed/9XnQWjBNjYU?rel=0&modestbranding=1",
+ "https://youtube.com/embed/eVuXP5zMJRY?rel=0&modestbranding=1",
+ "https://youtube.com/embed/eVuXP5zMJRY?rel=0&modestbranding=1",
+ "https://youtube.com/embed/e21eWw3Uq-M?rel=0&modestbranding=1",
+ "https://youtube.com/embed/ErA57gyQ6Y8?rel=0&modestbranding=1",
+ "https://youtube.com/embed/HLFHkbmpprE?rel=0&modestbranding=1",
+ "https://youtube.com/embed/LDIqAIK4DfM?rel=0&modestbranding=1",
+ "https://youtube.com/embed/H7H8rNHQAb0?rel=0&modestbranding=1",
+ "https://ok.ru/videoembed/1405244869184?autoplay=1",
 ]
 
 episodes = s1Ep;
+//21
