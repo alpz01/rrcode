@@ -21,10 +21,10 @@ function openStart() {
     if (plyr == "i") {
         let source = $("#iframePlayer").attr("src"),
             result = source.slice(8, 13),
-            z = document.getElementById("fpopt");
-
+            
         if (result == "docs." || result == "drive") {
             $(".pframe iframe").after('<div id="fpopt"></div>');
+            z = document.getElementById("fpopt");
             z.addEventListener("click", (e) => {
                 e.preventDefault();
             });
