@@ -20,7 +20,7 @@ function openStart() {
 
     if (plyr == "i") {
         let source = $("#iframePlayer").attr("src"),
-            result = source.slice(8, 13),
+            result = source.slice(8, 13);
             
         if (result == "docs." || result == "drive") {
             $(".pframe iframe").after('<div id="fpopt"></div>');
