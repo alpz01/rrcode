@@ -185,7 +185,8 @@ ul.navnav-tabsmenu {
     background-color:rgb(30,30,30);
     overflow-y:hidden;
     color:rgba(255,255,255,.5);
-    transition:height .5s ease
+    transition:height .5s ease;
+    margin: -0.75rem -1.25rem;
 }
 
 #readmorebtn{
