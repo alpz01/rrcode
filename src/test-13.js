@@ -5,9 +5,9 @@ let count = epSet[1];
 
 createDiv(epSet[0]);
 createButton();
-postStatusInfo()
 vidStream();
 openStart();
+postStatusInfo();
 
 function openStart() {
     let plyr = epSet[0];
@@ -340,9 +340,9 @@ function createDiv(playerType) {
         player = `<div id="container"><video controls poster=""class="vid1"><source src="" type="video/mp4"></video></div>`;
     }
 
-    let fcode = `<div id="shadow"></div><div class='stream-navbar'><div class='stream-pinfo'><span id='countEp'>EP 1</span><span id='playerType'>External Player</span></div><div class='navbar-right'><i class='bi bi-arrow-left-right' id='switchP'/><i class='bi bi-lightbulb-fill' id='lightOn'/><i class='bi bi-download' id='download'/><i class='bi bi-magic' id='autoplay'/><i class='bi bi-fast-forward-fill' id='nextEp'/></div></div><div class='DagPlaArea DagTo'><div class='video-content' id='PlayVideo'><div id='embed_holder'><div class='player-embed' id='pembed'><div class='playerload'/><div id='player_embed'><div class='pframe'/>${player}</div></div></div><div id='notifprompt'></div></div></div><div class='stream-nav'><div><div class='stream-server'>External Stream</div><div id='change-server'><i aria-hidden='true' class='stnav-gin fa fa-cog'/><span class='txtServer'>Server</span></div><div id='btn-share'><i class='stnav-gin fas fa-share'/><span class='txtShare'>Share</span></div><div id='btn-report'><i class='stnav-gin fas fa-exclamation-circle stnav-gin'/><span class='txtReport'>Report</span></div><div id='btn-reload'><i class='stnav-gin fas fa-redo'/><span class='txtReload'>Reload</span></div><div id='btn-fullscreen'><i class='stnav-gin fas fa-expand'/><span class='txtFull'>Full Screen</span></div></div><div class='animetitle'><a id='animebtn'><svg fill='none' height='25' id='foldersvg' stroke='currentColor' viewBox='0 0 24 24' width='25' xmlns='http://www.w3.org/2000/svg'><path d='M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/></svg></a><span id='animetitle'></span></div><div id='episodes-list'/><div class='s-navbottom'><div class='navbottom-left'><span id='genres'/><br/><span id='status'/><span id='moreinfo'><a id='morebtn'>More Info</a></span></div><div class='navbottom-right'><span id='eptotal'/></div></div></div>`
+    let fcode = `<div id="shadow"></div><div class="stream-navbar"><div class="stream-pinfo"><span id="countEp">EP 1</span><span id="playerType">External Player</span></div><div class="navbar-right"><i class="bi bi-arrow-left-right" id="switchP"></i><i class="bi bi-lightbulb-fill" id="lightOn"></i><i class="bi bi-download" id="download"></i><i class="bi bi-magic" id="autoplay"></i><i class="bi bi-fast-forward-fill" id="nextEp"></i></div></div><div class="DagPlaArea DagTo"><div class="video-content" id="PlayVideo"><div id="embed_holder"><div class="player-embed" id="pembed"><div class="playerload"></div><div id="player_embed"><div class="pframe">${player}</div><div id="notifprompt">Don't Spam</div></div></div></div></div></div><div class="stream-nav"><div><div class="stream-server">GoGo Stream</div><div id="change-server"><i class="stnav-gin fa fa-cog" aria-hidden="true"></i><span class="txtServer">Server</span></div><div id="btn-share"><i class="stnav-gin fas fa-share"></i><span class="txtShare">Share</span></div><div id="btn-report"><i class="stnav-gin fas fa-exclamation-circle stnav-gin"></i><span class="txtReport">Report</span></div><div id="btn-reload"><i class="stnav-gin fas fa-redo"></i><span class="txtReload">Reload</span></div><div id="btn-fullscreen"><i class="stnav-gin fas fa-expand"></i><span class="txtFull">Full Screen</span></div></div><div class="animetitle"><a id="animebtn"><svg stroke="currentColor" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="25" width="25" id="foldersvg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path></svg></a><span id="animetitle"></span></div><div id="episodes-list"></div><div class="s-navbottom"><div class="navbottom-left"><span id="genres"></span><br><span id="status"></span><span id="moreinfo"><a id="morebtn">More Info</a></span></div><div class="navbottom-right"><span id="eptotal"></span></div></div></div>`
 
-    $("#extra-info").after(fcode);
+    $(".extra-info").after(fcode);
 }
 
 function postStatusInfo() {
