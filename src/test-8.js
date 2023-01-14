@@ -4,8 +4,8 @@ let episodes_list = [];
 let count = epSet[1];
 
 createDiv(epSet[0]);
-postStatusInfo()
 createButton();
+postStatusInfo();
 vidStream();
 openStart();
 
@@ -159,7 +159,7 @@ function disableButton(input) {
 
 
 function createButton() {
-    let btnContainer = document.getElementById("episodes-list");
+    let btnContainer = document.getElementById('episodes-list');
     let btns = btnContainer.getElementsByClassName("play-button");
 
     for (let i = 1; i <= count; i++) {
