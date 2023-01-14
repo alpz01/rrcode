@@ -274,13 +274,14 @@ document.getElementById("download").addEventListener("click", () => {
         let second = 1, seconds = 10;
         btnDownloadSpamCount = 1;
 
-        let timer = setInterval(() => {
+        let timer = setInterval(function () {
             $("#notifprompt").text(`Please wait... ${seconds - second}`);
             $("#notifprompt").show()
 
             if (second > seconds) {
                 clearInterval(timer);
                 $("#notifprompt").hide();
+                btnDownloadSpamCount = 0;
                 downloaderVideo();
             }
         }, 1000);
