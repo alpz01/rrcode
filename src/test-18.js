@@ -275,7 +275,7 @@ document.getElementById("download").addEventListener("click", () => {
         btnDownloadSpamCount = 1;
 
         let timer = setInterval(function () {
-            $("#notifprompt").text(`Please wait... ${seconds - second}`);
+            $("#notifprompt").text(`Please wait... ${seconds -= second}`);
             $("#notifprompt").show()
 
             if (second > seconds) {
