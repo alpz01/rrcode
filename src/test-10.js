@@ -167,10 +167,6 @@ function createButton() {
         element.appendChild(document.createTextNode(`${i}`));
         $("#episodes-list").append(element);
     }
-
-    let btnContainer = document.getElementById('episodes-list');
-    let btns = btnContainer.getElementsByClassName("play-button");
-    $(btns[0]).addClass("play-button-disabled");
 }
 
 function vidStream() {
