@@ -375,13 +375,13 @@ function postStatusInfo() {
 document.getElementById("lightOn").addEventListener("click",()=>{
     toggleLight();
 })
+let lighton = 0;
 function toggleLight() {
     let streamCplayer = document.getElementById("PlayVideo"),
         light = document.getElementById("lightOn"),
         shadow = document.getElementById("shadow"),
-        navPright = document.querySelector(".navbar-right"),
-        lighton = 0;
-
+        navPright = document.querySelector(".navbar-right");
+        
     if (lighton == 0) {
         shadow.style.height = document.body.scrollHeight;
         shadow.style.display = "block";
