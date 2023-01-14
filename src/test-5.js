@@ -4,6 +4,7 @@ let episodes_list = [];
 let count = epSet[1];
 
 createDiv(epSet[0]);
+postStatusInfo()
 createButton();
 vidStream();
 openStart();
@@ -11,7 +12,7 @@ openStart();
 function openStart() {
     let plyr = epSet[0];
 
-    $("#animetitle").text(`${document.title}`)
+    $("#animetitle").text(document.title)
     $("#iframePlayer").attr("src", episodes_list[0]);
     $(".vid1 source").attr("src", episodes_list[0]);
     $("#eptotal").text(`Ep total : ${epSet[1]}`)
@@ -19,7 +20,7 @@ function openStart() {
     if (plyr == "i") {
         let source = $("#iframePlayer").attr("src"),
             result = source.slice(8, 13);
-            
+
         if (result == "docs." || result == "drive") {
             $(".pframe iframe").after('<div id="fpopt"></div>');
             z = document.getElementById("fpopt");
@@ -188,12 +189,12 @@ function vidStream() {
             case "yt":
                 link = `https://www.youtube.com/embed/${episodes[i - 1]}`;
                 episodes_list.push(link);
-                $(".e_server").text("YouTube Stream")
+                $(".stream-server").text("YouTube Stream")
                 break;
             case "g":
                 link = `https://drive.google.com/file/d/${episodes[i - 1]}/preview`;
                 episodes_list.push(link);
-                $(".e_server").text("GDrive Server");
+                $(".stream-server").text("GDrive Stream");
                 break;
             case "n":
                 episodes_list = episodes;
@@ -203,7 +204,7 @@ function vidStream() {
 }
 
 // reload button
-document.getElementById("btn-reload").addEventListener("click",()=>{
+document.getElementById("btn-reload").addEventListener("click", () => {
     videoReload();
 })
 
@@ -228,9 +229,9 @@ function videoReload() {
 // next button
 let btnNextSpamCount = 0;
 let btnNextEpCount = 1;
-document.getElementById("nextEp").addEventListener("click",()=>{
+document.getElementById("nextEp").addEventListener("click", () => {
     let totalEp = epSet[1], nextEp = getNextEp();
-        
+
     if (btnNextSpamCount == 0) {
         if (nextEp <= totalEp) {
             btnEpisodeClick(nextEp);
@@ -266,7 +267,7 @@ function getNextEp() {
 }
 
 let btnDownloadSpamCount = 0;
-document.getElementById("download").addEventListener("click",()=>{
+document.getElementById("download").addEventListener("click", () => {
     let downloadConfirm = epSet[2];
 
     if (downloadConfirm == "y" && btnDownloadSpamCount == 0) {
@@ -301,26 +302,26 @@ function downloaderVideo() {
 
 
 function btnEpisodeClick(number) {
-   let sourceType = epSet[0];
+    let sourceType = epSet[0];
 
-   switch (sourceType) {
-    case "i":
-        forFrame(number);
-        break;
-    case "j":
-        forJwPlayer(number);
-        break;
-    case "p":
-        forPlayerIo(number);
-        break;
-    default:
-        console.log("Error no player Identify")
-   }
+    switch (sourceType) {
+        case "i":
+            forFrame(number);
+            break;
+        case "j":
+            forJwPlayer(number);
+            break;
+        case "p":
+            forPlayerIo(number);
+            break;
+        default:
+            console.log("Error no player Identify")
+    }
 }
 
 function notifAction(message) {
     $("#notifprompt").text(message);
-  	$("#notifprompt").fadeIn();
+    $("#notifprompt").fadeIn();
     $("#notifprompt").show();
 
     setTimeout(() => {
@@ -339,5 +340,33 @@ function createDiv(playerType) {
         player = `<div id="container"><video controls poster=""class="vid1"><source src="" type="video/mp4"></video></div>`;
     }
 
-    $(".pframe").append(player);
+    let fcode = `<div class='stream-navbar'><div class='stream-pinfo'><span id='countEp'>EP 1</span><span id='playerType'>External Player</span></div><div class='navbar-right'><i class='bi bi-arrow-left-right' id='switchP'/><i class='bi bi-lightbulb-fill' id='lightOn'/><i class='bi bi-download' id='download'/><i class='bi bi-magic' id='autoplay'/><i class='bi bi-fast-forward-fill' id='nextEp'/></div></div><div class='DagPlaArea DagTo'><div class='video-content' id='PlayVideo'><div id='embed_holder'><div class='player-embed' id='pembed'><div class='playerload'/><div id='player_embed'><div class='pframe'/>${player}</div></div></div><div id='notifprompt'></div></div></div><div class='stream-nav'><div><div class='stream-server'>External Stream</div><div id='change-server'><i aria-hidden='true' class='stnav-gin fa fa-cog'/><span class='txtServer'>Server</span></div><div id='btn-share'><i class='stnav-gin fas fa-share'/><span class='txtShare'>Share</span></div><div id='btn-report'><i class='stnav-gin fas fa-exclamation-circle stnav-gin'/><span class='txtReport'>Report</span></div><div id='btn-reload'><i class='stnav-gin fas fa-redo'/><span class='txtReload'>Reload</span></div><div id='btn-fullscreen'><i class='stnav-gin fas fa-expand'/><span class='txtFull'>Full Screen</span></div></div><div class='animetitle'><a id='animebtn'><svg fill='none' height='25' id='foldersvg' stroke='currentColor' viewBox='0 0 24 24' width='25' xmlns='http://www.w3.org/2000/svg'><path d='M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/></svg></a><span id='animetitle'></span></div><div id='episodes-list'/><div class='s-navbottom'><div class='navbottom-left'><span id='genres'/><br/><span id='status'/><span id='moreinfo'><a id='morebtn'>More Info</a></span></div><div class='navbottom-right'><span id='eptotal'/></div></div></div>`
+
+    $(".pframe").append(fcode);
+}
+
+function postStatusInfo() {
+    let genreList = [];
+    let genres = $("#genresTarget a").text();
+    let genre = genres.replace(/\s+/g, ' ');
+    genre = genre.split(',');
+
+    for (let i = 0; i <= genre.length - 2; i++) {
+        if (i != genre.length - 2) {
+            genreList.push(`<a href="https://www.rioanimeplay.xyz/search/label/${genre[i].trim()}" rel="tag">${genre[i].trim()}, </a>`);
+        } else {
+            genreList.push(`<a href="https://www.rioanimeplay.xyz/search/label/${genre[i].trim()}" rel="tag">${genre[i].trim()} </a>`);
+        }
+    }
+
+    genre = genreList.join('');
+    genre = genre.substring(0, genre.length - 1);
+    $("#genres").append(`Genres : ${genre}`);
+
+    let status = $("#statusTarget a").text();
+    if (status.trim() == "Finished Airing") {
+        $("#status").text("Status : Completed");
+    } else {
+        $("#status").text(`Status : ${status.trim()}`);
+    }
 }
