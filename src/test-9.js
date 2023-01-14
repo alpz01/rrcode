@@ -159,9 +159,7 @@ function disableButton(input) {
 
 
 function createButton() {
-    let btnContainer = document.getElementById('episodes-list');
-    let btns = btnContainer.getElementsByClassName("play-button");
-
+    
     for (let i = 1; i <= count; i++) {
         let element = document.createElement("button");
         element.setAttribute("class", "play-button");
@@ -170,6 +168,8 @@ function createButton() {
         $("#episodes-list").append(element);
     }
 
+    let btnContainer = document.getElementById('episodes-list');
+    let btns = btnContainer.getElementsByClassName("play-button");
     $(btns[0]).addClass("play-button-disabled");
 }
 
