@@ -4,8 +4,11 @@ let btnClick = 1;
 let PrevBtnPos = 0;
 
 
-openStart();
+createDiv(epSet[0]);
 createButton();
+vidStream();
+openStart();
+postStatusInfo();
 
 function openStart() {
     let player = epSet[0];
