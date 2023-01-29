@@ -31,9 +31,9 @@ function openStart() {
             });
         }
     }
-    plyr === "j" ? forJwPlayer(1) : null;
-    plyr == "cf" ? forcustomPlayer(epSet[1]) : null
-    plyr === "p" ? playerIoSetup() : null;
+    player === "j" ? forJwPlayer(1) : null;
+    player == "cf" ? forcustomPlayer(epSet[1]) : null
+    player === "p" ? playerIoSetup() : null;
 }
 
 function playButton(event) {
