@@ -37,7 +37,7 @@ function openStart() {
 }
 
 function playButton(event) {
-    let btnClicked = parseInt(event.target.textContent);
+    let btnClicked = parseInt(event.textContent);
     let tagType = epSet[0];
 
     $("#countEp").text(`EP ${btnClicked}`);
