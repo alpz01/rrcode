@@ -185,7 +185,7 @@ function createButton() {
     }
     
     for (let i = start; i <= numberBtn; i++) {
-        player === "cf" ? epNumber = epStart + i : epNumber = count;
+        player === "cf" ? epNumber = epStart + i : epNumber = i;
 		const element = document.createElement("button");
         element.classList.add("play-button");
         element.setAttribute("onclick", "playButton()");
