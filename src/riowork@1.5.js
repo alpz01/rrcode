@@ -40,8 +40,15 @@ function playButton() {
     let btnClicked = parseInt(event.target.textContent);
     let tagType = epSet[0];
 
-    $("#countEp").text(`EP ${btnClicked}`);
-    $("#rprt-cnt-ep").text(btnClicked);
+    if (player === "cf") {
+        let cf_BtnClicked = parseInt(epSet[1] + btnClicked)
+        $("#countEp").text(`EP ${cf_BtnClicked}`);
+        $("#rprt-cnt-ep").text(cf_BtnClicked);
+    } else {
+        $("#countEp").text(`EP ${btnClicked}`);
+        $("#rprt-cnt-ep").text(btnClicked);
+    }
+
     btnClick = btnClicked;
     disableButton(btnClicked);
 
