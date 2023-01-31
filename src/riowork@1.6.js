@@ -30,24 +30,18 @@ function openStart() {
                 e.preventDefault();
             });
         }
+    } 
+    if (player === "cf") {
+        forcustomPlayer(0);
+        $("#countEp").text(`EP ${epSet[1]}`);
     }
     player === "j" ? forJwPlayer(1) : null;
-    player == "cf" ? forcustomPlayer(0) : null
     player === "p" ? playerIoSetup() : null;
 }
 
 function playButton() {
     let btnClicked = parseInt(event.target.textContent);
     let tagType = epSet[0];
-
-    if (player === "cf") {
-        let cf_BtnClicked = parseInt(epSet[1] + btnClicked)
-        $("#countEp").text(`EP ${cf_BtnClicked}`);
-        $("#rprt-cnt-ep").text(cf_BtnClicked);
-    } else {
-        $("#countEp").text(`EP ${btnClicked}`);
-        $("#rprt-cnt-ep").text(btnClicked);
-    }
 
     btnClick = btnClicked;
     disableButton(btnClicked);
@@ -70,6 +64,9 @@ function playButton() {
             console.log("No source identified");
             break;
     }
+
+    $("#countEp").text(`EP ${btnClicked}`);
+    $("#rprt-cnt-ep").text(btnClicked);
 }
 
 function forFrame(input) {
