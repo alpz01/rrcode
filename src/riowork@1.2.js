@@ -3,6 +3,7 @@ const count = epSet[1];
 let btnClick = 1;
 let PrevBtnPos = 0;
 
+
 createDiv(epSet[0]);
 createButton();
 vidStream();
@@ -109,16 +110,19 @@ function forPlayerIo(input) {
     video.play();
 }
 
-function forcustomPlayer(input) {
-    let BtnArrPos = Math.abs(epSet[1] - input);
-
+function forCustomPlayer(input) {
+    let BtnArrPos = (input > episodes_list.length)
+      ? Math.abs(typeof epSet[1] === 'string' 
+          ? parseInt(epSet[1]) 
+          : epSet[1] - input)
+      : input;
+  
     let countEp = document.querySelector("#countEp");
     countEp.textContent = `EP ${input}`;
     let iframePlayer = document.querySelector("#iframePlayer");
     iframePlayer.src = episodes_list[BtnArrPos];
-}
-
-
+  }
+  
 function playerIoSetup() {
     let controls = [
         "play-large", // The large play button in the center
@@ -168,21 +172,23 @@ function createButton() {
     const btnContainer = document.getElementById("episodes-list");
     const btns = btnContainer.getElementsByClassName("play-button");
     const player = epSet[0];
-    let start, numberBtn;
+    let numberBtn, start, epStart, epNumber;
 
     if (player === "cf") {
-        start = epSet[1];
-        numberBtn = epSet[5] + 1;
-    } else if (player !== "cf") {
+        numberBtn = epSet[4] - 1;
+        start = 0;
+        epStart = typeof epSet[1] === 'string' ? parseInt(epSet[1]) : epSet[1];
+    } else {
         start = 1;
         numberBtn = count;
     }
-
+    
     for (let i = start; i <= numberBtn; i++) {
-        const element = document.createElement("button");
+        player === "cf" ? epNumber = start + i : epNumber = count;
+		const element = document.createElement("button");
         element.classList.add("play-button");
         element.setAttribute("onclick", "playButton()");
-        element.innerHTML = i;
+        element.innerHTML = epNumber;
         btnContainer.appendChild(element);
     }
 
@@ -193,7 +199,7 @@ function createButton() {
 function vidStream() {
     let srcType = epSet[3];
     const player = epSet[0];
-    let start, numberEp;
+    let numberEp;
 
     const linkFormat = {
         vids: (i) => `https://cdn8.vidstreamjp.cloud/animix/watch/${keyEp}-episode-${i}`,
@@ -203,22 +209,9 @@ function vidStream() {
         n: (i) => episodes[i - 1]
     }
 
-    if (player === "cf") {
-        start = epSet[1];
-        numberEp = epSet[5] + 1;
-    } else if (player !== "cf") {
-        start = 1;
-        numberEp = count;
-    }
-
-    for (let i = start; i <= numberEp; i++) {
-        let result;
-        if (player === "cf") {
-            result = i - start + 1;
-        } else {
-            result = i;
-        }
-        const link = linkFormat[srcType](result);
+    player === "cf" ?  numberEp = epSet[4] :  numberEp = count;
+    for (let i = 1; i <= numberEp; i++) {
+        const link = linkFormat[srcType](i);
         episodes_list.push(link);
     }
 }
@@ -248,7 +241,7 @@ document.getElementById("nextEp").addEventListener("click", () => {
 
 function btnNext() {
     const episodeNum = getNextEp();
-    const end = epSet[5];
+    const end = epSet[4];
 
     if (btnNextSpamCount === 0) {
         if (epSet[0] !== "cf" && btnNextEpCount <= epSet[1]) {
@@ -260,7 +253,7 @@ function btnNext() {
 
         } else if (epSet[0] === "cf" && btnNextEpCount < end) {
             const result = parseInt(epSet[1]) + episodeNum;
-            btnEpisodeClick(result);
+            btnEpisodeClick(episodeNum);
             disableButton(result);
             btnClick = result;
             btnNextEpCount = episodeNum;
@@ -285,7 +278,7 @@ let firstTry_Cf = true;
 function getNextEp() {
     const player = epSet[0];
     const start = parseInt(epSet[1]);
-    const number = epSet[5];
+    const number = epSet[4];
     const clicked = btnClick;
 
     if (player === "cf" && btnNextEpCount !== number) {
