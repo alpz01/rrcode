@@ -32,7 +32,7 @@ function openStart() {
         }
     }
     player === "j" ? forJwPlayer(1) : null;
-    player == "cf" ? forcustomPlayer(epSet[1]) : null
+    player == "cf" ? forcustomPlayer(0) : null
     player === "p" ? playerIoSetup() : null;
 }
 
@@ -55,9 +55,10 @@ function playButton() {
         case "p":
             forPlayerIo(btnClicked);
             break;
-        case "cf":
-            forcustomPlayer(btnClicked);
-            break;
+		case "cf":
+			let arrClick = Math.abs(parseInt(epSet[1]) - btnClicked);
+			forcustomPlayer(arrClick);
+			break;
         default:
             console.log("No source identified");
             break;
@@ -110,19 +111,15 @@ function forPlayerIo(input) {
     video.play();
 }
 
-function forCustomPlayer(input) {
-    let BtnArrPos = (input > episodes_list.length)
-      ? Math.abs(typeof epSet[1] === 'string' 
-          ? parseInt(epSet[1]) 
-          : epSet[1] - input)
-      : input;
-  
-    let countEp = document.querySelector("#countEp");
-    countEp.textContent = `EP ${input}`;
-    let iframePlayer = document.querySelector("#iframePlayer");
-    iframePlayer.src = episodes_list[BtnArrPos];
-  }
-  
+function forcustomPlayer(input) {
+  let BtnArrPos = input;
+  let countEp = document.querySelector("#countEp");
+  countEp.textContent = `EP ${input}`;
+  let iframePlayer = document.querySelector("#iframePlayer");
+  iframePlayer.src = episodes_list[BtnArrPos]
+}
+
+
 function playerIoSetup() {
     let controls = [
         "play-large", // The large play button in the center
@@ -150,8 +147,8 @@ function playerIoSetup() {
 function disableButton(input) {
     let btnContainer = document.getElementById("episodes-list");
     let btns = btnContainer.getElementsByClassName("play-button");
-    let BtnArrPos;
-
+	let BtnArrPos;
+    
     if (epSet[0] === "cf") {
         BtnArrPos = Math.abs(epSet[1] - input);
     } else {
@@ -184,7 +181,7 @@ function createButton() {
     }
     
     for (let i = start; i <= numberBtn; i++) {
-        player === "cf" ? epNumber = start + i : epNumber = count;
+        player === "cf" ? epNumber = epStart + i : epNumber = count;
 		const element = document.createElement("button");
         element.classList.add("play-button");
         element.setAttribute("onclick", "playButton()");
@@ -194,6 +191,7 @@ function createButton() {
 
     btns[0].classList.add("play-button-disabled");
 }
+
 
 
 function vidStream() {
@@ -274,7 +272,7 @@ function btnNext() {
     }
 }
 
-let firstTry_Cf = true;
+let isCf = true;
 function getNextEp() {
     const player = epSet[0];
     const start = parseInt(epSet[1]);
@@ -282,8 +280,8 @@ function getNextEp() {
     const clicked = btnClick;
 
     if (player === "cf" && btnNextEpCount !== number) {
-        if (firstTry_Cf) {
-            isCf = false;
+        if (isCf)   {
+			isCf = false;
             return btnNextEpCount;
         } else {
             let arrClick = Math.abs(start - clicked);
@@ -345,9 +343,9 @@ function btnEpisodeClick(number) {
         case "p":
             forPlayerIo(number);
             break;
-        case "cf":
-            forcustomPlayer(number);
-            break;
+		case "cf":
+			forcustomPlayer(number);
+			break;
         default:
             console.log("Error no player Identify")
     }
@@ -380,39 +378,55 @@ function createDiv(playerType) {
 }
 
 function postStatusInfo() {
-    const genres = $("#genresTarget a").text().split(',').map(g => g.trim());
-    const genreLinks = genres.map(g => `<a href="https://www.rioanimeplay.xyz/search/label/${g}" rel="tag">${g}</a>`);
-    const genre = genreLinks.join(', ');
-    $("#genres").append(`Genres: ${genre}`);
-    const status = $("#statusTarget a").text().trim();
-    const statusText = status === 'Finished Airing' ? 'Completed' : status;
-    $("#status").text(`Status: ${statusText}`);
+    let genreList = [];
+    let genres = $("#genresTarget a").text();
+    let genre = genres.replace(/\s+/g, ' ');
+    genre = genre.split(',');
+
+    for (let i = 0; i <= genre.length - 2; i++) {
+        if (i != genre.length - 2) {
+            genreList.push(`<a href="https://www.rioanimeplay.xyz/search/label/${genre[i].trim()}" rel="tag">${genre[i].trim()}, </a>`);
+        } else {
+            genreList.push(`<a href="https://www.rioanimeplay.xyz/search/label/${genre[i].trim()}" rel="tag">${genre[i].trim()} </a>`);
+        }
+    }
+
+    genre = genreList.join('');
+    genre = genre.substring(0, genre.length - 1);
+    $("#genres").append(`Genres : ${genre}`);
+
+    let status = $("#statusTarget a").text();
+    if (status.trim() == "Finished Airing") {
+        $("#status").text("Status : Completed");
+    } else {
+        $("#status").text(`Status : ${status.trim()}`);
+    }
 }
 
-document.getElementById("lightOn").addEventListener("click", () => {
+document.getElementById("lightOn").addEventListener("click",()=>{
     toggleLight();
 })
-
-let lighton = true;
+let lighton = 0;
 function toggleLight() {
     let streamCplayer = document.getElementById("PlayVideo"),
         light = document.getElementById("lightOn"),
         shadow = document.getElementById("shadow"),
         navPright = document.querySelector(".navbar-right");
-
-    if (lighton) {
-        shadow.style.height = `${document.body.scrollHeight}px`;
+        
+    if (lighton == 0) {
+        shadow.style.height = document.body.scrollHeight;
         shadow.style.display = "block";
         navPright.style.position = "relative";
         navPright.style.zIndex = "10";
-        streamCplayer.style.zIndex = "11";
-        lighton = false;
+        streamCplayer.style.zIndex = "11"
+        lighton = 1;
     } else {
         shadow.style.display = "none";
-        shadow.style.height = "0";
-        navPright.style.position = "";
-        navPright.style.zIndex = "";
-        streamCplayer.style.zIndex = "";
-        lighton = true;
+        shadow.style.height = "none";
+        navPright.style.position = null;
+        navPright.style.zIndex = null;
+        streamCplayer.style.zIndex = null;
+        lighton = 0;
     }
+
 }
