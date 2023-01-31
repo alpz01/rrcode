@@ -175,7 +175,7 @@ function createButton() {
     let numberBtn, start, epStart, epNumber;
 
     if (player === "cf") {
-        numberBtn = epSet[4] - 1;
+        numberBtn = epSet[5] - 1;
         start = 0;
         epStart = typeof epSet[1] === 'string' ? parseInt(epSet[1]) : epSet[1];
     } else {
@@ -209,7 +209,7 @@ function vidStream() {
         n: (i) => episodes[i - 1]
     }
 
-    player === "cf" ?  numberEp = epSet[4] :  numberEp = count;
+    player === "cf" ?  numberEp = epSet[5] :  numberEp = count;
     for (let i = 1; i <= numberEp; i++) {
         const link = linkFormat[srcType](i);
         episodes_list.push(link);
@@ -241,7 +241,7 @@ document.getElementById("nextEp").addEventListener("click", () => {
 
 function btnNext() {
     const episodeNum = getNextEp();
-    const end = epSet[4];
+    const end = epSet[5];
 
     if (btnNextSpamCount === 0) {
         if (epSet[0] !== "cf" && btnNextEpCount <= epSet[1]) {
@@ -278,7 +278,7 @@ let firstTry_Cf = true;
 function getNextEp() {
     const player = epSet[0];
     const start = parseInt(epSet[1]);
-    const number = epSet[4];
+    const number = epSet[5];
     const clicked = btnClick;
 
     if (player === "cf" && btnNextEpCount !== number) {
