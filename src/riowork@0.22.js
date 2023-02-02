@@ -1,6 +1,6 @@
 const episodes_list = [];
 const player = epSet[0];
-const start = epSet[1];
+const start = parseInt(epSet[1]);
 let btnClick = 1;
 let prevBtnArr = 0;
 
