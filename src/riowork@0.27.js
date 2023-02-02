@@ -12,14 +12,13 @@ postStatusInfo();
 
 function openStart() {
     if (player === "i") {
-        let source = $("#iframePlayer").attr("src"),
-            result = source.slice(8, 13);
+        forIframePlayer(0);
         $("#playerType").text("External Player");
-        $("#iframePlayer").attr("src", episodes_list[0]);
-
+        let source = $("#iframePlayer").attr("src");
+        let result = source.slice(8, 13);
         if (result === "docs." || result === "drive") {
             $(".pframe iframe").after('<div id="fpopt"></div>');
-            z = document.getElementById("fpopt");
+            const z = document.getElementById("fpopt");
             z.addEventListener("click", (e) => {
                 e.preventDefault();
             });
