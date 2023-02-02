@@ -37,6 +37,10 @@ function openStart() {
     } else {
         $("#eptotal").text(`Ep total : ${epSet[5]}`);
     }
+    
+    if (epSet[3] === "g") {
+        $(".stream-server").text("GDrive Stream")
+    }
 
     $("#animetitle").text(document.title);
 }
