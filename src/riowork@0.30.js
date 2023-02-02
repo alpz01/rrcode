@@ -299,7 +299,7 @@ document.getElementById("download").addEventListener("click", () => {
 // Download video
 function downloadVideo() {
     const videoType = epSet[3];
-    const epNumber = episodes_list[btnClick - 1];
+    const epNumber = episodes[btnClick - 1];
 
     if (videoType === "g") {
         location.href = `https://drive.google.com/u/0/uc?id=${epNumber}&export=download`;
