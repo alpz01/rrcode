@@ -24,7 +24,7 @@ function openStart() {
             });
         }
     } else if (player === "j") {
-        forJwplayer(0);
+        forJwPlayer(0);
     } else if (player === "p") {
         forPlayerIo(0);
         playerIoSetup();
