@@ -76,7 +76,7 @@ function playerSwitcher(input) {
 function forJwPlayer(input) {
     let link = episodes_list[input];
     let title = getTitle();
-    title = `${title} : EP ${input}`;
+    title = `${title} : EP ${input }`;
 
     (jwplayer.key = "ITWMv7t88JGzI0xPwW8I0+LveiXX9SWbfdmt0ArUSyc="),
         jwplayer("ahesuifu").setup({
