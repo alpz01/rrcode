@@ -142,7 +142,7 @@ function playerIoSetup() {
 function forCustomPlayer(input) {
     const link = episodes_list[input];
     document.querySelector("#iframePlayer").src = link;
-    $("#countEp").text(`EP ${start + input + 1}`);
+    $("#countEp").text(`EP ${start + input}`);
 }
 
 function disableButton(input) {
