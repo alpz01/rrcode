@@ -279,10 +279,10 @@ let videoDownloadSpam = false;
 document.getElementById("download").addEventListener("click", () => {
     const confirmDL = epSet[2];
     if (confirmDL === "y" && !videoDownloadSpam) {
+        let seconds = 10;
         videoDownloadSpam = true;
         const timer = setInterval(() => {
-            let seconds = 10, second = 1;
-            $("#notifprompt").text(`Please wait... ${seconds -= second}`);
+            $("#notifprompt").text(`Please wait... ${seconds -= 1}`);
             $("#notifprompt").fadeIn(400);
 
             if (seconds === 0) {
