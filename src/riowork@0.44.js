@@ -433,6 +433,7 @@ function switchPlayer() {
                 if (src.includes("https://archive.org/")) {
                     let fcode = `<div id="container"><video controls poster=""class="vid1"><source src="" type="video/mp4"></video></div>`;
                     playerDivChanger(fcode, "p", "Internal");
+					playerIoSetup();
                 }
             }
         }
