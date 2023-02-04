@@ -418,20 +418,19 @@ function switchPlayer() {
         }
         if (epSet[0] === "p") {
             if (player === "p") {
-                let jwContainer = document.getElementById("ahesuifu");
-                let playerInstance = jwplayer(jwContainer);
-                let src = playerInstance.getPlaylistItem()['file'];
-
-                if (src.includes("https://archive.org/")) {
-                    let fcode = `<iframe allowfullscreen frameborder="0" height="100%" loading="lazy" marginheight="0" marginwidth="0" mozallowfullscreen="true" scrolling="NO" src="" webkitallowfullscreen="true" width="100%" id="iframePlayer"></iframe>`;
-                    playerDivChanger(fcode, "i", "External");
-                }
-            } else if (player === "i") {
                 let container = document.getElementById("container");
                 let source = container.getElementsByTagName("source")[0];
                 let link = source.getAttribute("src");
 
-                if (epSet[0] === "p" && link.includes("https://archive.org/")) {
+                if (link.includes("https://archive.org/")) {
+                    let fcode = `<iframe allowfullscreen frameborder="0" height="100%" loading="lazy" marginheight="0" marginwidth="0" mozallowfullscreen="true" scrolling="NO" src="" webkitallowfullscreen="true" width="100%" id="iframePlayer"></iframe>`;
+                    playerDivChanger(fcode, "i", "External");
+                }
+            } else if (player === "i") {
+                let iframe = document.getElementById("iframePlayer");
+                let src = iframe.getAttribute("src");
+
+                if (src.includes("https://archive.org/")) {
                     let fcode = `<div id="container"><video controls poster=""class="vid1"><source src="" type="video/mp4"></video></div>`;
                     playerDivChanger(fcode, "p", "Internal");
                 }
