@@ -404,6 +404,8 @@ function switchPlayer() {
                 if (src.includes("https://archive.org/")) {
                     let fcode = `<iframe allowfullscreen frameborder="0" height="100%" loading="lazy" marginheight="0" marginwidth="0" mozallowfullscreen="true" scrolling="NO" src="" webkitallowfullscreen="true" width="100%" id="iframePlayer"></iframe>`;
                     playerDivChanger(fcode, "i", "External");
+                } else {
+                    userNotif();
                 }
 
             } else if (player === "i") {
@@ -413,6 +415,8 @@ function switchPlayer() {
                 if (src.includes("https://archive.org/")) {
                     let fcode = `<div id="#spt_holder_vdbox"><div id="ahesuifu"></div></div>`;
                     playerDivChanger(fcode, "j", "Internal");
+                } else {
+                    userNotif();
                 }
             }
         }
@@ -425,6 +429,8 @@ function switchPlayer() {
                 if (link.includes("https://archive.org/")) {
                     let fcode = `<iframe allowfullscreen frameborder="0" height="100%" loading="lazy" marginheight="0" marginwidth="0" mozallowfullscreen="true" scrolling="NO" src="" webkitallowfullscreen="true" width="100%" id="iframePlayer"></iframe>`;
                     playerDivChanger(fcode, "i", "External");
+                } else {
+                    userNotif()
                 }
             } else if (player === "i") {
                 let iframe = document.getElementById("iframePlayer");
@@ -434,11 +440,13 @@ function switchPlayer() {
                     let fcode = `<div id="container"><video controls poster=""class="vid1"><source src="" type="video/mp4"></video></div>`;
                     playerDivChanger(fcode, "p", "Internal");
 					playerIoSetup();
+                } else {
+                    userNotif();
                 }
             }
         }
         if (epSet[0] === "cf" || epSet[0] === "i") {
-            notifAction("No Other Player Available");
+            userNotif();
         }
 
         playerInfoUpdater()
@@ -456,6 +464,10 @@ function switchPlayer() {
         player = inputPlayer;
         playerSwitcher(btnClick);
         notifAction(`Switching To ${sourcePlayer} Player`)
+    }
+
+    function userNotif() {
+        notifAction("No Other Player Available");
     }
 }
 //update the Player internal or external
