@@ -6,6 +6,8 @@ for (i = 1; i <= 80; i++) {
         episodes.push(`${first}bl-0ck-cl-0ver-ep-46/Bl0ck%20Cl0ver%20Ep${i}.mp4`)
     } else if (i > 50 && i < 81) {
         episodes.push(`${first}/black-61/black-${i}.mp4`)
+    } else if (i > 80 && i < 101) {
+        episodes.push(`${first}/black-91/black-${i}.mp4
     }
 }
 
