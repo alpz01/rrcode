@@ -3,6 +3,6 @@ let episodes = ["https://archive.org/download/bl-0ck-cl-0ver-ep-17/Blv0cke%20Cl0
 for (i = 1; i <= 50; i++) {
     let first = "https://archive.org/download/";
     if (i > 40) {
-        episodes.push(`bl-0ck-cl-0ver-ep-46/Bl0ck%20Cl0ver%20Ep${i}.mp4`)
+        episodes.push(`${first}bl-0ck-cl-0ver-ep-46/Bl0ck%20Cl0ver%20Ep${i}.mp4`)
     }
 }
