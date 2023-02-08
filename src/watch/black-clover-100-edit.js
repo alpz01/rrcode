@@ -7,7 +7,7 @@ for (i = 1; i <= 80; i++) {
     } else if (i > 50 && i < 81) {
         episodes.push(`${first}/black-61/black-${i}.mp4`)
     } else if (i > 80 && i < 101) {
-        episodes.push(`${first}/black-91/black-${i}.mp4
+        episodes.push(`${first}/black-91/black-${i}.mp4`)
     }
 }
 
