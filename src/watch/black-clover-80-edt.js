@@ -2,9 +2,10 @@ let episodes = ["https://archive.org/download/bl-0ck-cl-0ver-ep-17/Blv0cke%20Cl0
 
 for (i = 1; i <= 80; i++) {
     let first = "https://archive.org/download/";
-    if (i > 40 && i !== 51) {
+    if (i > 40 && i < 51) {
         episodes.push(`${first}bl-0ck-cl-0ver-ep-46/Bl0ck%20Cl0ver%20Ep${i}.mp4`)
-    } else if (i > 50) {
+    } else if (i > 50 && i < 81) {
         episodes.push(`${first}/black-61/black-${i}.mp4`)
     }
 }
+
