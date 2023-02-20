@@ -26,8 +26,8 @@ function openStart() {
     } else if (player === "j") {
         forJwPlayer(0);
     } else if (player === "p") {
-        forPlayerIo(0);
         playerIoSetup();
+	forPlayerIo(0);
     } else if (player === "cf") {
         forCustomPlayer(0);
     }
